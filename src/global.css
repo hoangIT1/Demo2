@@ -1,0 +1,57 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,wght@400;400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap");
+
+body {
+  margin: 0;
+  line-height: normal;
+}
+:root {
+  /* Color */
+  --color-darkslategray: #373b4d;
+  --color-gray-200: rgba(0, 0, 0, 0.85);
+  --color-gray-100: #191919;
+  --color-aliceblue: #e1eff2;
+  --color-darkgoldenrod: #b78c07;
+  --color-black: #000;
+  --color-whitesmoke: #f1f1f1;
+  --color-white: #fff;
+
+  /* Gap */
+  --gap-1: 1px;
+  --gap-5: 5px;
+  --gap-10: 10px;
+
+  /* Padding */
+  --padding-1: 1px;
+  --padding-2: 2px;
+  --padding-3: 3px;
+  --padding-6: 6px;
+  --padding-10: 10px;
+  --padding-11: 11px;
+  --padding-16: 16px;
+  --padding-18: 18px;
+  --padding-19: 19px;
+  --padding-20: 20px;
+  --padding-22: 22px;
+  --padding-24: 24px;
+  --padding-28: 28px;
+  --padding-30: 30px;
+  --padding-40: 40px;
+  --padding-100: 100px;
+
+  /* Font */
+  --font-inter: Inter;
+  --font-raleway: Raleway;
+
+  /* FontSize */
+  --font-size-14: 14px;
+  --font-size-15: 15px;
+  --font-size-16: 16px;
+  --font-size-18: 18px;
+  --font-size-20: 20px;
+  --font-size-22: 22px;
+  --font-size-24: 24px;
+  --font-size-32: 32px;
+  --font-size-40: 40px;
+  --font-size-72: 72px;
+}
