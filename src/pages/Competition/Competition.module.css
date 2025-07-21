@@ -1,0 +1,335 @@
+/* === BỐ CỤC CHUNG === */
+.pageContainer {
+  background-color: var(--color-white);
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.mainContent {
+  width: 100%;
+  padding: 4rem 5%;
+  box-sizing: border-box;
+}
+
+.contentWrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* === TIÊU ĐỀ CHÍNH === */
+.mainTitle {
+  font-family: var(--font-raleway);
+  font-size: 2.8rem;
+  color: var(--color-black);
+  text-transform: uppercase;
+  margin: 0;
+  font-weight: 700;
+}
+
+.subTitle {
+  font-family: var(--font-raleway);
+  font-size: 2.2rem;
+  color: var(--color-black);
+  text-transform: uppercase;
+  margin: 0.5rem 0 2.5rem 0; /* Tăng khoảng cách dưới một chút */
+  font-weight: 700;
+}
+
+/* === ĐOẠN VĂN & NGÀY THÁNG === */
+.paragraph {
+  font-family: var(--font-inter);
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--color-darkslategray);
+  max-width: 750px; 
+  margin: 0 auto 1rem auto;
+  text-align: justify;
+}
+
+.date {
+  font-family: var(--font-inter);
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--color-black);
+  margin: 1rem auto; /* Căn lề trên dưới */
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid #ccc;
+  width: 100px;
+  margin: 2.5rem auto; /* Căn giữa và tạo khoảng cách */
+}
+
+.footerDivider {
+    border: none;
+    border-top: 1px solid #ccc;
+    width: 90%;
+    margin: 2rem auto;
+}
+
+/* === CÁC TIÊU ĐỀ PHỤ VÀ TEXT NỔI BẬT === */
+.highlightText {
+  font-family: var(--font-raleway);
+  color: var(--color-darkgoldenrod);
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  /* Giảm khoảng cách giữa các dòng highlight text */
+  margin: 0.5rem 0; 
+}
+
+.sectionTitle {
+  font-family: var(--font-raleway);
+  font-size: 2rem;
+  color: var(--color-black);
+  text-transform: uppercase;
+  /* Giảm mạnh khoảng cách lề trên */
+  margin: 2.5rem 0 1rem 0; 
+  font-weight: 700;
+}
+
+.miniSubtitle {
+  font-family: var(--font-inter);
+  font-size: 1.1rem;
+  color: var(--color-darkslategray);
+  /* Giảm khoảng cách dưới */
+  margin: 1rem auto 2rem auto; 
+  font-weight: 400;
+}
+
+/* === HÌNH ẢNH === */
+.image {
+  width: 100%;
+  /* Giảm kích thước ảnh lớn, giữ tỷ lệ */
+  max-width: 700px; 
+  height: auto;
+  /* Giảm khoảng cách trên dưới của ảnh */
+  margin: 1.5rem auto; 
+  display: block;
+}
+
+/* === KHỐI SPONSOR CUỐI TRANG === */
+
+/* Tùy chỉnh riêng cho tiêu đề OUR SPONSORS */
+.sponsorSection .sectionTitle {
+  /* Xa ảnh trên nó ra */
+  margin-top: 5rem; 
+  /* Gần 3 ảnh dưới nó lại */
+  margin-bottom: 1.5rem; 
+}
+
+.finalImageContainer {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.finalImage {
+  max-width: 30%;
+  height: auto;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .mainTitle {
+    font-size: 2rem;
+  }
+  .subTitle {
+    font-size: 1.6rem;
+  }
+  .sectionTitle {
+    font-size: 1.5rem;
+  }
+  .highlightText {
+    font-size: 1.2rem;
+  }
+  .sponsorSection .finalImageContainer {
+    flex-direction: column;
+  }
+  .sponsorSection .finalImage {
+    max-width: 80%;
+  }
+}
+
+/* === BỐ CỤC CHUNG === */
+.pageContainer {
+  background-color: var(--color-white);
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.mainContent {
+  width: 100%;
+  padding: 4rem 5%;
+  box-sizing: border-box;
+}
+
+.contentWrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* === TIÊU ĐỀ CHÍNH === */
+.mainTitle {
+  font-family: var(--font-raleway);
+  font-size: 2.8rem;
+  color: var(--color-black);
+  text-transform: uppercase;
+  margin: 0;
+  font-weight: 700;
+}
+
+.subTitle {
+  font-family: var(--font-raleway);
+  font-size: 2.2rem;
+  color: var(--color-black);
+  text-transform: uppercase;
+  margin: 0.5rem 0 2.5rem 0; /* Tăng khoảng cách dưới một chút */
+  font-weight: 700;
+}
+
+/* === ĐOẠN VĂN & NGÀY THÁNG === */
+.paragraph {
+  font-family: var(--font-inter);
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--color-darkslategray);
+  max-width: 750px; 
+  margin: 0 auto 1rem auto;
+  text-align: justify;
+}
+
+.date {
+  font-family: var(--font-inter);
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--color-black);
+  margin: 1rem auto; /* Căn lề trên dưới */
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid #ccc;
+  width: 100px;
+  margin: 2.5rem auto; /* Căn giữa và tạo khoảng cách */
+}
+
+.footerDivider {
+    border: none;
+    border-top: 1px solid #ccc;
+    width: 90%;
+    margin: 2rem auto;
+}
+
+/* === CÁC TIÊU ĐỀ PHỤ VÀ TEXT NỔI BẬT === */
+.highlightText {
+  font-family: var(--font-raleway);
+  color: var(--color-darkgoldenrod);
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  /* Giảm khoảng cách giữa các dòng highlight text */
+  margin: 0.5rem 0; 
+}
+
+.sectionTitle {
+  font-family: var(--font-raleway);
+  font-size: 2rem;
+  color: var(--color-black);
+  text-transform: uppercase;
+  /* Giảm mạnh khoảng cách lề trên */
+  margin: 2.5rem 0 1rem 0; 
+  font-weight: 700;
+}
+
+.miniSubtitle {
+  font-family: var(--font-inter);
+  font-size: 1.1rem;
+  color: var(--color-darkslategray);
+  /* Giảm khoảng cách dưới */
+  margin: 1rem auto 2rem auto; 
+  font-weight: 400;
+}
+
+/* === HÌNH ẢNH === */
+.image {
+  width: 100%;
+  /* Giảm kích thước ảnh lớn, giữ tỷ lệ */
+  max-width: 700px; 
+  height: auto;
+  /* Giảm khoảng cách trên dưới của ảnh */
+  margin: 1.5rem auto; 
+  display: block;
+}
+
+/* === KHỐI SPONSOR CUỐI TRANG === */
+
+/* Tùy chỉnh riêng cho tiêu đề OUR SPONSORS */
+.sponsorSection .sectionTitle {
+  /* Xa ảnh trên nó ra */
+  margin-top: 5rem; 
+  /* Gần 3 ảnh dưới nó lại */
+  margin-bottom: 1.5rem; 
+}
+
+.finalImageContainer {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.finalImage {
+  max-width: 30%;
+  height: auto;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .mainTitle {
+    font-size: 2rem;
+  }
+  .subTitle {
+    font-size: 1.6rem;
+  }
+  .sectionTitle {
+    font-size: 1.5rem;
+  }
+  .highlightText {
+    font-size: 1.2rem;
+  }
+  .sponsorSection .finalImageContainer {
+    flex-direction: column;
+  }
+  .sponsorSection .finalImage {
+    max-width: 80%;
+  }
+}
+
+/* === CSS MỚI CHO PHẦN "SUPPORT BY" === */
+.supportByContainer {
+  display: flex;
+  flex-wrap: wrap; /* Cho phép các ảnh xuống dòng */
+  justify-content: center; /* Căn giữa các ảnh */
+  gap: 1rem; /* Khoảng cách giữa các ảnh */
+}
+
+.supportByImage {
+  /* Mỗi ảnh chiếm khoảng 1/5 chiều rộng, trừ đi khoảng cách */
+  flex: 1 1 calc(20% - 1rem); 
+  max-width: 150px; /* Giới hạn kích thước tối đa để không quá to */
+  height: auto;
+  object-fit: contain; /* Đảm bảo ảnh không bị méo */
+}
+
+/* Responsive cho phần "SUPPORT BY" trên mobile */
+@media (max-width: 768px) {
+  .supportByImage {
+    /* Trên mobile, mỗi ảnh chiếm khoảng 1/3 chiều rộng */
+    flex-basis: calc(33.33% - 1rem);
+  }
+}

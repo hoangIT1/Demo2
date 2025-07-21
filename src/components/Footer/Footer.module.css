@@ -1,0 +1,85 @@
+/* hoangit1/demo2/Demo2-9855f584a63b8f581c2297b365b2a42bf8b33caa/src/components/Footer.module.css */
+
+/* --- Base Styles (Mobile First) --- */
+.footer {
+  background-color: var(--color-white); /* */
+  padding: 2rem 1rem; /* Sử dụng rem thay vì px/vw */
+  text-align: center; /* Căn giữa trên mobile */
+  font-family: var(--font-inter); /* */
+  color: var(--color-darkslategray); /* */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.contentWrapper {
+  display: flex;
+  flex-direction: column; /* Xếp chồng trên mobile */
+  align-items: center;
+  gap: 2rem; /* Khoảng cách giữa các khối */
+  margin-bottom: 2rem;
+}
+
+.contactSection,
+.socialSection {
+  max-width: 450px; /* Giới hạn độ rộng trên mobile */
+}
+
+.contactSection h4,
+.socialSection h4 {
+  font-family: var(--font-raleway); /* */
+  color: var(--color-darkgoldenrod); /* */
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.contactSection p {
+  margin: 0.5rem 0;
+  line-height: 1.6;
+}
+
+.contactSection a {
+  text-decoration: underline;
+  color: inherit;
+}
+
+.socialIcons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.socialIcons img {
+  width: 30px; /* Kích thước cố định cho icon */
+  height: 30px;
+}
+
+.copyright {
+  font-size: 0.8rem;
+  color: var(--color-black); /* */
+  border-top: 1px solid var(--color-whitesmoke); /* */
+  padding-top: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+/* --- Tablet and bigger screens (>= 768px) --- */
+@media (min-width: 768px) {
+  .footer {
+    text-align: left; /* Căn trái trên màn hình lớn */
+    padding: 3rem 5%;
+  }
+
+  .contentWrapper {
+    flex-direction: row; /* Chuyển thành hàng ngang */
+    justify-content: space-between; /* Đẩy 2 cột ra 2 bên */
+    align-items: flex-start; /* Căn lề trên cùng */
+    gap: 3rem;
+  }
+
+  .socialSection {
+    text-align: right; /* Căn phải cho cột social */
+  }
+
+  .socialIcons {
+    justify-content: flex-end;
+  }
+}

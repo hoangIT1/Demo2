@@ -5,7 +5,14 @@ import {
   useNavigationType,
   useLocation,
 } from "react-router-dom";
-import WLight1 from "./pages/WLight1";
+import HomePage from "./pages/HomePage/HomePage";
+import MarkAnthonyPage from "./pages/MarkAnthony/MarkAnthony";
+import CompetitionPage from "./pages/Competition/Competition";
+import NationalDirectorsPage from "./pages/NationalDirectors/NationalDirectors";
+import ContestantsPage from "./pages/Contestants/Contestants";
+import PressPage from "./pages/Press/Press";
+import BlogPostDetail from "./pages/BlogPostDetail/BlogPostDetail";
+
 
 function App() {
   const action = useNavigationType();
@@ -24,12 +31,25 @@ function App() {
 
     switch (pathname) {
       case "/":
-        title = "";
-        metaDescription = "";
+        title = "Home"; // Có thể đặt title cho trang chủ
+        metaDescription = "Welcome to the main page.";
         break;
-      case "/1920w-light":
-        title = "";
-        metaDescription = "";
+      // THÊM CASE CHO TRANG MỚI
+      case "/mark-anthony":
+        title = "Mark Anthony";
+        metaDescription = "Information about Mark Anthony.";
+        break;
+      case "/national-directors":
+        title = "National Directors";
+        metaDescription = "Our official National Directors for the Mister International Competition.";
+        break;
+      case "/contestants":
+        title = "2025 Contestants";
+        metaDescription = "Meet the contestants for the 2025 Mister International competition.";
+        break;
+      case "/press":
+        title = "Press";
+        metaDescription = "Mister International Organization Press Site.";
         break;
     }
 
@@ -49,7 +69,13 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<WLight1 />} />
+      <Route path="/" element={<HomePage />} />
+      <Route path="/mark-anthony" element={<MarkAnthonyPage />} />
+      <Route path="/competition" element={<CompetitionPage />} />
+      <Route path="/national-directors" element={<NationalDirectorsPage />} />
+      <Route path="/contestants" element={<ContestantsPage />} />
+      <Route path="/press" element={<PressPage />} />
+      <Route path="/press/:postId" element={<BlogPostDetail />} />
     </Routes>
   );
 }

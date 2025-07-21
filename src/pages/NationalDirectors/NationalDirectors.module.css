@@ -1,0 +1,74 @@
+.pageContainer {
+  background-color: var(--color-white);
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.mainContent {
+  width: 100%;
+  padding: 2rem 5% 4rem;
+  box-sizing: border-box;
+}
+
+.contentWrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.pageTitle {
+  font-family: var(--font-raleway);
+  font-size: 2.8rem;
+  color: var(--color-black);
+  margin: 0 0 1.5rem 0;
+  font-weight: 700;
+}
+
+.introText {
+  font-family: var(--font-inter);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-darkslategray);
+  max-width: 800px;
+  margin: 0 auto 1rem auto;
+  text-align: left;
+}
+
+.introText a {
+  color: var(--color-darkgoldenrod);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.introText a:hover {
+  text-decoration: underline;
+}
+
+.directorsGrid {
+  display: flex;         
+  justify-content: center; 
+  align-items: center;   
+  flex-wrap: wrap;       
+  gap: 2rem;             
+  margin-top: 4rem;
+}
+
+.directorCard {
+  flex-shrink: 0; 
+}
+
+/* === THAY ĐỔI Ở ĐÂY === */
+.directorImage {
+  display: block;
+  height: auto;
+  max-width: 350px; /* <<< Giới hạn chiều rộng tối đa của ảnh */
+  width: 100%;      /* <<< Đảm bảo ảnh co lại trên màn hình nhỏ hơn */
+  object-fit: contain;
+}
+/* ======================= */
+
+@media (max-width: 768px) {
+  .pageTitle {
+    font-size: 2.2rem;
+  }
+}

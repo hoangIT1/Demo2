@@ -1,0 +1,223 @@
+/* hoangit1/demo2/Demo2-9855f584a63b8f581c2297b365b2a42bf8b33caa/src/pages/WLight1.module.css */
+
+.pageContainer {
+  background-color: var(--color-white);
+  width: 100%;
+  overflow-x: hidden; /* Ngăn cuộn ngang */
+}
+
+.mainContent {
+  width: 100%;
+}
+
+/* Helper class for consistent padding */
+.sectionPadding {
+  padding: 4rem 5%; /* 5% padding hai bên */
+  box-sizing: border-box;
+}
+
+.heroPadding {
+  padding: 4rem 5% 2rem 5%;
+  box-sizing: border-box;
+}
+
+/* --- Hero Section --- */
+.heroSection {
+  background-color: var(--color-whitesmoke);
+  text-align: center;
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.mainTitle {
+  font-family: var(--font-raleway);
+  font-size: 2.5rem; /* Kích thước cho mobile */
+  line-height: 1.2;
+  text-transform: uppercase;
+  color: var(--color-black);
+  margin: 0;
+}
+
+.subTitle {
+  font-family: var(--font-raleway);
+  font-size: 1.25rem; /* Kích thước cho mobile */
+  line-height: 1.5;
+  color: var(--color-darkgoldenrod);
+  margin: 1rem 0 0 0;
+  font-weight: 400;
+}
+
+/* --- General Info Section Styles --- */
+.infoSection {
+  background-color: var(--color-aliceblue);
+}
+
+.centeredContent {
+  max-width: 800px; /* Giới hạn độ rộng của text */
+  margin: 0 auto 3rem auto; /* Căn giữa và tạo khoảng cách dưới */
+  text-align: center;
+}
+
+.sectionTitle {
+  font-family: var(--font-raleway);
+  font-size: 1.8rem;
+  color: var(--color-darkgoldenrod);
+  margin-bottom: 1.5rem;
+  margin-top: 2.5rem;
+  font-weight: 400;
+}
+
+.paragraph {
+  font-family: var(--font-inter);
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--color-black);
+  margin: 0;
+}
+
+.fullWidthImage {
+  width: 100vw;
+  height: auto;
+  max-height: 70vh; /* Giới hạn chiều cao tối đa là 70% chiều cao màn hình */
+  margin-left: calc(-50vw + 50%);
+  display: block;
+}
+
+/* --- Two Columns Section --- */
+.twoColumns {
+  display: flex;
+  flex-direction: column; /* Xếp chồng trên mobile */
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 3rem auto 0 auto; /* Khoảng cách với nội dung phía trên */
+}
+
+.column {
+  flex: 1;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.columnTitle {
+  font-family: var(--font-raleway);
+  font-size: 1.5rem;
+  color: var(--color-darkgoldenrod);
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.columnImage {
+  width: 100%;
+  max-width: 400px; /* Giới hạn độ rộng ảnh */
+  height: 300px;
+  object-fit: contain; /* SỬA Ở ĐÂY: Hiển thị toàn bộ ảnh trong khung */
+  margin-top: auto;
+  align-self: center; /* Căn giữa ảnh trong cột */
+}
+
+/* --- Media Queries for Desktop --- */
+@media (min-width: 768px) {
+  .sectionPadding {
+    padding: 5rem 5%;
+  }
+
+  .heroPadding {
+    padding: 5rem 5% 3rem 5%;
+  }
+
+  .mainTitle {
+    font-size: 4.5rem; /* 72px */
+  }
+
+  .subTitle {
+    font-size: 2.5rem; /* 40px */
+  }
+
+  .sectionTitle {
+    font-size: 2.5rem; /* 40px */
+  }
+
+  .paragraph {
+    font-size: 1.1rem;
+  }
+
+  .twoColumns {
+    flex-direction: row; /* Chuyển thành hàng ngang trên desktop */
+  }
+}
+
+.imageRow {
+  display: flex;
+  justify-content: center; /* Căn giữa 2 ảnh theo chiều ngang */
+  gap: 10px;               /* Khoảng cách nhỏ giữa 2 ảnh */
+  margin-top: auto;        /* Đẩy hàng ảnh xuống dưới cùng */
+}
+
+/* Áp dụng style chỉ cho ảnh bên trong .imageRow */
+.imageRow .columnImage {
+  height: 300px;          /* GIỮ NGUYÊN CHIỀU CAO 300px */
+  width: auto;            /* Chiều rộng tự động điều chỉnh theo tỷ lệ */
+  flex: 1;                /* Để 2 ảnh tự chia sẻ không gian chiều ngang */
+  object-fit: contain;    /* Đảm bảo ảnh không bị cắt hoặc méo */
+  margin-top: 0;          /* Bỏ margin-top thừa */
+  max-width: 50%;         /* Giới hạn để mỗi ảnh không chiếm quá nửa không gian */
+}
+
+/* --- Split Section (Image Left, Text Right) --- */
+.splitSection {
+  display: flex;
+  width: 100%;
+  background-color: var(--color-black); /* Màu nền dự phòng */
+}
+
+.splitImageColumn,
+.splitTextColumn {
+  flex: 1; /* Mỗi cột chiếm 50% chiều rộng */
+  display: flex; /* Dùng flex để căn giữa nội dung bên trong */
+  justify-content: center;
+  align-items: center;
+}
+
+.splitTextColumn {
+  background-color: var(--color-black);
+  padding: 4rem 2rem;
+}
+
+.splitImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Đảm bảo ảnh lấp đầy cột và có chiều cao bằng nhau */
+}
+
+.splitTextContent {
+  color: var(--color-white);
+  font-family: var(--font-inter);
+  max-width: 500px;
+}
+
+.splitTitle {
+  font-family: var(--font-raleway);
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.splitParagraph {
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+/* --- Responsive cho màn hình nhỏ (mobile) --- */
+@media (max-width: 768px) {
+  .splitSection {
+    flex-direction: column; /* Xếp 2 cột theo chiều dọc */
+  }
+
+  .splitTextColumn {
+    padding: 3rem 1.5rem;
+  }
+}

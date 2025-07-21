@@ -1,0 +1,165 @@
+.pageContainer {
+  background-color: var(--color-white);
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.mainContent {
+  width: 100%;
+  padding: 4rem 5%;
+  box-sizing: border-box;
+}
+
+.pageHeader {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.title {
+  font-family: var(--font-raleway);
+  font-size: 2.2rem;
+  color: var(--color-darkgoldenrod);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.subtitle {
+  font-family: var(--font-raleway);
+  font-size: 1.2rem;
+  color: var(--color-darkslategray);
+  text-transform: uppercase;
+  margin: 0.5rem 0 0 0;
+  font-weight: 400;
+}
+
+/* SAU KHI CHỈNH SỬA */
+.contentRow {
+  display: flex;
+  flex-direction: row;
+  gap: 2.5rem;
+  align-items: flex-start; /* << THAY ĐỔI Ở ĐÂY: Căn các mục lên trên cùng */
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 3rem;
+}
+
+.textColumn {
+  flex: 1;
+  font-family: var(--font-inter);
+  color: var(--color-black);
+  text-align: left; /* Toàn bộ cột này sẽ căn trái */
+}
+
+/* === THÊM MỚI: Định dạng cho tiêu đề chung của 4 đoạn văn === */
+.mainContentTitle {
+  font-family: var(--font-raleway);
+  font-size: 1.6rem; /* Kích thước phù hợp */
+  font-weight: 700; /* In đậm */
+  color: var(--color-black); /* Màu đen */
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+/* === THÊM MỚI: Định dạng cho tiêu đề của mỗi đoạn văn === */
+.sectionTitle {
+  font-family: var(--font-raleway);
+  font-size: 1.1rem;
+  font-weight: 700; /* In đậm */
+  color: var(--color-darkslategray); /* Màu xám đậm */
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.miniSectionTitle {
+  font-family: var(--font-raleway);
+  font-size: 0.8rem;
+  font-weight: 700; /* In đậm */
+  color: var(--color-darkslategray); /* Màu xám đậm */
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+/* Căn lề trái cho đoạn văn bản */
+.textColumn p {
+  font-size: 1rem;
+  line-height: 1.7;
+  text-align: left;
+  margin: 0; /* Xóa margin mặc định của thẻ <p> */
+}
+
+.imageColumn {
+  flex: 1;
+}
+
+.imageColumn img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+
+.bottomGallery {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 4rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.galleryImage {
+  width: 100%;
+  max-width: 280px;
+  height: auto;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .mainContent {
+    padding: 2rem 5%;
+  }
+
+  .contentRow {
+    flex-direction: column; 
+    max-width: 100%;
+  }
+  
+  .title {
+    font-size: 1.8rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .mainContentTitle {
+    font-size: 1.4rem;
+  }
+
+  .sectionTitle {
+    font-size: 1rem;
+  }
+
+  .miniSectionTitle {
+    font-size: 0.8rem;
+  }
+
+}
+
+/* === Bổ sung: Đảm bảo căn chỉnh lề trên tuyệt đối === */
+.mainContentTitle, .sectionTitle, .miniSectionTitle {
+  margin-top: 0; /* Xóa khoảng trắng lề trên mặc định của các tiêu đề */
+}
+
+/* Thêm một chút khoảng cách phía trên cho các sectionTitle không phải là tiêu đề đầu tiên */
+.sectionTitle:not(:first-child) {
+    margin-top: 1.5rem;
+}
+
+/* Đảm bảo tiêu đề đầu tiên trong cột text không có lề trên */
+.textColumn > *:first-child {
+  margin-top: 0;
+}

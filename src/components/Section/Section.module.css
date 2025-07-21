@@ -1,0 +1,85 @@
+/* hoangit1/demo2/Demo2-9855f584a63b8f581c2297b365b2a42bf8b33caa/src/components/Section1.module.css */
+
+/* --- Base Styles (Mobile First) --- */
+.section {
+  background-color: var(--color-white);
+  padding: 4rem 1rem; /* Padding trên dưới nhiều hơn 2 bên */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.container {
+  width: 100%;
+  max-width: 600px; /* Giới hạn độ rộng tối đa của form */
+  text-align: center;
+}
+
+.title {
+  font-family: var(--font-raleway);
+  font-size: 1.8rem; /* 29px */
+  color: var(--color-black);
+  margin-bottom: 2rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column; /* Xếp chồng input và button trên mobile */
+  gap: 1rem; /* Khoảng cách giữa input và button */
+}
+
+.input {
+  background-color: var(--color-white);
+  border: 2px solid var(--color-darkslategray);
+  font-family: var(--font-inter);
+  font-size: 1rem;
+  padding: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center; /* Căn giữa placeholder text */
+}
+
+.input::placeholder {
+  color: var(--color-darkslategray);
+  opacity: 0.7;
+}
+
+.button {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  border: 1px solid var(--color-black);
+  padding: 1rem;
+  font-family: var(--font-inter);
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  width: 100%; /* Chiếm toàn bộ độ rộng trên mobile */
+  box-sizing: border-box;
+}
+
+.button:hover {
+  background-color: var(--color-darkslategray);
+}
+
+/* --- Tablet and bigger screens (>= 576px) --- */
+@media (min-width: 576px) {
+  .title {
+    font-size: 2.25rem; /* Phóng to chữ cho màn hình lớn hơn */
+  }
+
+  .form {
+    flex-direction: row; /* Chuyển thành hàng ngang */
+    align-items: center; /* Căn giữa theo chiều dọc */
+  }
+  
+  .input {
+    text-align: left; /* Căn trái placeholder trên desktop */
+  }
+
+  .button {
+    width: auto; /* Độ rộng tự động theo nội dung */
+    white-space: nowrap; /* Ngăn chữ "Join" bị xuống dòng */
+  }
+}

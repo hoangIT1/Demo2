@@ -1,0 +1,179 @@
+.pageContainer {
+  background-color: var(--color-white);
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* --- Banner Section Styles --- */
+.bannerSection {
+  background-color: #000;
+  color: var(--color-white);
+  padding: 6rem 5%; /* Tăng padding để có nhiều không gian hơn */
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  align-items: center; /* Căn giữa nội dung theo chiều dọc */
+}
+
+.bannerContent {
+  display: flex;
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+  gap: 4rem; /* Tăng khoảng cách giữa 2 cột */
+}
+
+.leftColumn,
+.rightColumn {
+  flex: 1; /* Chia đôi không gian */
+}
+
+.title {
+  font-family: var(--font-raleway);
+  font-size: 2.5rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.paragraph {
+  font-family: var(--font-inter);
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--color-whitesmoke);
+  margin: 0 0 1.5rem 0;
+}
+
+.divider {
+  border: none;
+  height: 1px;
+  background-color: var(--color-darkgoldenrod);
+  width: 50px;
+  margin: 2rem 0 0 0;
+}
+
+/* --- Responsive cho màn hình nhỏ --- */
+@media (max-width: 768px) {
+  .bannerSection {
+    padding: 4rem 5%;
+  }
+
+  .bannerContent {
+    flex-direction: column; /* Xếp chồng 2 cột */
+    gap: 3rem;
+  }
+
+  .title {
+    font-size: 2rem;
+    text-align: center; /* Căn giữa tiêu đề trên mobile */
+  }
+
+  .rightColumn {
+    text-align: center; /* Căn giữa văn bản và đường kẻ trên mobile */
+  }
+
+  .paragraph {
+    text-align: left; /* Giữ văn bản căn trái để dễ đọc */
+  }
+
+  .divider {
+    margin: 2rem auto 0 auto; /* Căn giữa đường kẻ */
+  }
+}
+
+/* ... các style đã có của bạn ... */
+
+/* --- Sub-Navigation Bar Styles --- */
+.subNav {
+  padding: 1.5rem 5%;
+  border-bottom: 1px solid #e0e0e0; 
+  background-color: var(--color-white);
+}
+
+.subNavContent {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.allPostsLink {
+  font-family: var(--font-raleway);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--color-black);
+  text-decoration: none;
+}
+
+.authLinks {
+  font-family: var(--font-inter);
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* Khoảng cách giữa Login, / và Sign Up */
+}
+
+.authLinks a {
+  color: var(--color-darkslategray);
+  text-decoration: none;
+}
+
+.authLinks a:hover {
+  text-decoration: underline;
+}
+
+.authLinks span {
+  color: #ccc; /* Màu cho dấu gạch chéo */
+}
+
+/* --- Responsive cho màn hình nhỏ --- */
+@media (max-width: 768px) {
+  /* ... các media query đã có ... */
+
+  .subNavContent {
+    flex-direction: column; /* Xếp chồng các phần tử */
+    gap: 1rem; /* Khoảng cách khi xếp chồng */
+  }
+}
+
+.searchContainer {
+  /* Vùng chứa icon, có thể thêm style nếu cần */
+  cursor: pointer;
+}
+
+.searchIcon {
+  position: relative;
+  width: 10px;
+  height: 10px;
+  border: 2px solid var(--color-darkslategray);
+  border-radius: 50%; /* Vẽ vòng tròn của kính lúp */
+}
+
+.searchIcon::after {
+  content: "";
+  position: absolute;
+  bottom: -7px; /* Vị trí của tay cầm */
+  right: -7px;
+  width: 8px; /* Chiều dài của tay cầm */
+  height: 2px; /* Độ dày của tay cầm */
+  background-color: var(--color-darkslategray);
+  transform: rotate(45deg); /* Xoay để tạo thành tay cầm kính lúp */
+}
+
+/* ... các style đã có ... */
+
+/* --- Blog Section --- */
+.blogSection {
+  padding: 3rem 5%;
+  background-color: #f9f9f9; /* Một màu nền nhẹ */
+}
+
+.blogGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
