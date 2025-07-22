@@ -26,3 +26,17 @@ export type TypeBlogPostSkeleton = EntrySkeletonType<{
   image: EntryFieldTypes.AssetLink; // Dùng cho ảnh được liên kết (Linked Asset)
   content: EntryFieldTypes.RichText;
 }>;
+
+
+// ======================= Image Slider =======================
+export interface ImageSliderItem {
+  id: string;
+  title: string;
+  image: string;
+}
+
+export type TypeImageSliderSkeleton = EntrySkeletonType<{
+  title: EntryFieldTypes.Symbol;
+  image: EntryFieldTypes.AssetLink;
+}>;
+// =============================================================
