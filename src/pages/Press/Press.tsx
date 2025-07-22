@@ -1,11 +1,39 @@
+// src/pages/Press/Press.tsx
+
 import { FunctionComponent } from "react";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import styles from "./Press.module.css";
-import BlogPostCard from "../../components/BlogPostCard/BlogPostCard"; // Import component thẻ
-import { blogPosts } from "../../data/blogPosts"; // Import dữ liệu
+import BlogPostCard from "../../components/BlogPostCard/BlogPostCard";
+import { BlogPost } from "../../types"; // Import "khuôn mẫu" dữ liệu
+
+// Import custom hook
+import { useContentful } from "../../hooks/useContentful";
+
+// Import dữ liệu tĩnh để làm dự phòng
+import { blogPosts as fallbackPosts } from "../../data/blogPosts";
 
 const PressPage: FunctionComponent = () => {
+  // Gọi hook để lấy dữ liệu BlogPost động từ Contentful
+  const { data: dynamicPosts, isLoading, error } = useContentful<BlogPost>('blogPost');
+
+  // Xử lý trạng thái đang tải
+  if (isLoading) {
+    // Hiển thị một giao diện loading đơn giản trong khi chờ API
+    return <div>Loading Press Page...</div>;
+  }
+
+  // Quyết định nguồn dữ liệu để hiển thị
+  // Nếu có lỗi HOẶC không có dữ liệu động, dùng dữ liệu tĩnh. Ngược lại, dùng dữ liệu động.
+  const postsToRender = error || !dynamicPosts ? fallbackPosts : dynamicPosts;
+  
+  // In ra console để bạn biết nguồn dữ liệu nào đang được sử dụng (hữu ích khi debug)
+  if (error || !dynamicPosts) {
+      console.log("Using fallback (static) data for Press page.");
+  } else {
+      console.log("Using dynamic data from Contentful for Press page.");
+  }
+
   return (
     <div className={styles.pageContainer}>
       <Header sticky={false} />
@@ -13,8 +41,6 @@ const PressPage: FunctionComponent = () => {
         {/* --- Phần Banner Đen --- */}
         <section className={styles.bannerSection}>
           <div className={styles.bannerContent}>
-            
-            {/* Cột trái - Tiêu đề lớn */}
             <div className={styles.leftColumn}>
               <h1 className={styles.title}>
                 Mister King
@@ -26,8 +52,6 @@ const PressPage: FunctionComponent = () => {
                 Press Site
               </h1>
             </div>
-
-            {/* Cột phải - Văn bản */}
             <div className={styles.rightColumn}>
               <p className={styles.paragraph}>
                 Welcome to the Mister King International Organization Press Site. This
@@ -49,27 +73,24 @@ const PressPage: FunctionComponent = () => {
           </div>
         </section>
 
-        {/* --- Các phần khác của trang Press sẽ được thêm vào đây --- */}
-        +        {/* --- Thanh điều hướng phụ --- */}
+        {/* --- Thanh điều hướng phụ --- */}
         <nav className={styles.subNav}>
           <div className={styles.subNavContent}>
             <a href="/press" className={styles.allPostsLink}>
               All Posts
             </a>
-            {/* <div className={styles.searchContainer}>
-              <div className={styles.searchIcon} />
-            </div> */}
           </div>
         </nav>
 
+        {/* --- Phần hiển thị Blog --- */}
         <section className={styles.blogSection}>
           <div className={styles.blogGrid}>
-            {blogPosts.map((post) => (
+            {/* Sử dụng biến postsToRender để đảm bảo luôn có dữ liệu để hiển thị */}
+            {postsToRender.map((post) => (
               <BlogPostCard key={post.id} post={post} />
             ))}
           </div>
         </section>
-
       </main>
       <Footer />
     </div>

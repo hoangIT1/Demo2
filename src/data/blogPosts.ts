@@ -1,17 +1,8 @@
-// Dữ liệu mẫu cho các bài viết
-export interface Post {
-  id: number;
-  title: string;
-  snippet: string;
-  author: string;
-  avatar: string; // Có thể là chữ cái đầu hoặc link ảnh
-  date: string;
-  readTime: string;
-  image: string; // Ảnh chính của bài viết
-  content: string; // Nội dung đầy đủ (có thể là HTML)
-}
+import { BlogPost } from "../types";
 
-export const blogPosts: Post[] = [
+// Dữ liệu mẫu cho các bài viết
+
+export const blogPosts: BlogPost[] = [
   {
     id: 1,
     title: "Mister King International 2024 Coronation Night Highlights",
@@ -38,7 +29,7 @@ export const blogPosts: Post[] = [
     author: "John Doe",
     avatar: "J",
     date: "Jun 12",
-    readTime: "4 min read",
+    readTime: "2 min read",
     image: "/Copy of I26.jpg", // TODO: Thay bằng ảnh của bạn trong thư mục /public
     content: `
       <p>In its Global awareness program on issues related to the Sustainable Development Goals (SDGs) adopted by the United Nations, as a global organization of human rights activists; it is our duty to make our contributions to changing the lives of the most vulnerable populations, exposed to natural disasters.
@@ -69,7 +60,7 @@ export const blogPosts: Post[] = [
     author: "John Doe",
     avatar: "J",
     date: "Jun 12",
-    readTime: "4 min read",
+    readTime: "2 min read",
     image: "/Copy of IG26.jpg", // TODO: Thay bằng ảnh của bạn trong thư mục /public
     content: `
       <p>

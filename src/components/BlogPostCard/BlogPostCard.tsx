@@ -1,10 +1,10 @@
 import { FunctionComponent } from "react";
 import { Link } from "react-router-dom"; // Dùng để điều hướng
-import { Post } from "../../data/blogPosts"; // Import kiểu dữ liệu
 import styles from "./BlogPostCard.module.css";
+import { BlogPost } from "../../types";
 
 type BlogPostCardProps = {
-  post: Post;
+  post: BlogPost;
 };
 
 const BlogPostCard: FunctionComponent<BlogPostCardProps> = ({ post }) => {
