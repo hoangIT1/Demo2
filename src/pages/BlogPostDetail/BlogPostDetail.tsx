@@ -32,6 +32,7 @@ const BlogPostDetail: FunctionComponent = () => {
         });
     }
   }, [postId]);
+  
 
   if (isLoading) {
     return <div></div>;
@@ -70,10 +71,10 @@ const BlogPostDetail: FunctionComponent = () => {
         
         <article className={styles.article}>
           <div className={styles.authorInfo}>
-            <div className={styles.avatar}>{postFields.avatar}</div>
+            <div className={styles.avatar}>{String(postFields.avatar)}</div>
             <div className={styles.meta}>
-              <span>{postFields.author}</span>
-              <small>{`${new Date(postFields.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })} · ${postFields.readTime}`}</small>
+              <span>{String(postFields.author)}</span>
+              <small>{`${new Date(String(postFields.date)).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })} · ${postFields.readTime}`}</small>
             </div>
           </div>
           

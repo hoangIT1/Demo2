@@ -11,7 +11,7 @@ export interface BlogPost {
   date: string;
   readTime: string;
   image: string;
-  content?: Document; // content có thể không có ở trang danh sách, nên ta thêm `?` để nó là tùy chọn (optional)
+  content?: Document | string; // content có thể không có ở trang danh sách, nên ta thêm `?` để nó là tùy chọn (optional)
 }
 
 // **ĐỊNH NGHĨA SKELETON CHO CONTENTFUL**
