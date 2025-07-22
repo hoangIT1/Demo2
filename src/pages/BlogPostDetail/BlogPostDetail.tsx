@@ -2,38 +2,61 @@
 
 import { FunctionComponent, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { createClient } from "contentful";
-import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
+import { createClient, Entry } from "contentful";
+import { documentToReactComponents, Options } from '@contentful/rich-text-react-renderer';
+import { BLOCKS, Document } from '@contentful/rich-text-types';
+
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import styles from "./BlogPostDetail.module.css";
 
-// --- Cấu hình client ---
 const client = createClient({
-  space: import.meta.env.VITE_CONTENTFUL_SPACE_ID,
-  accessToken: import.meta.env.VITE_CONTENTFUL_ACCESS_TOKEN,
+  space: import.meta.env.VITE_CONTENTFUL_SPACE_ID as string,
+  accessToken: import.meta.env.VITE_CONTENTFUL_ACCESS_TOKEN as string,
 });
-// ----------------------
 
 const BlogPostDetail: FunctionComponent = () => {
   const { postId } = useParams<{ postId: string }>();
-  const [post, setPost] = useState<any>(null);
+  const [post, setPost] = useState<Entry<any> | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
     if (postId) {
-      client.getEntry(postId)
+      client.getEntry(postId, { include: 2 })
         .then((entry) => {
           setPost(entry);
         })
-        .catch(console.error);
+        .catch(console.error)
+        .finally(() => {
+          setIsLoading(false);
+        });
     }
   }, [postId]);
 
+  if (isLoading) {
+    return <div></div>;
+  }
+
   if (!post) {
-    return <div>Loading...</div>;
+    return <div>Post not found.</div>;
   }
 
   const postFields = post.fields;
+  
+  // TÙY CHỌN RENDER CHO HÌNH ẢNH
+  const renderOptions: Options = {
+    renderNode: {
+      [BLOCKS.EMBEDDED_ASSET]: (node: any) => {
+        const { file, title } = node.data.target.fields;
+        // *** THAY ĐỔI QUAN TRỌNG: Bọc ảnh trong một div để có thể style ***
+        return (
+          <div className={styles.embeddedAssetWrapper}>
+            <img src={`https:${file.url}`} alt={title || ''} />
+          </div>
+        );
+      },
+    },
+  };
 
   return (
     <div className={styles.pageContainer}>
@@ -41,9 +64,7 @@ const BlogPostDetail: FunctionComponent = () => {
       <main>
         <nav className={styles.subNav}>
           <div className={styles.subNavContent}>
-            <a href="/press" className={styles.allPostsLink}>
-              All Posts
-            </a>
+            <a href="/press" className={styles.allPostsLink}>All Posts</a>
           </div>
         </nav>
         
@@ -56,14 +77,12 @@ const BlogPostDetail: FunctionComponent = () => {
             </div>
           </div>
           
-          <h1 className={styles.title}>{postFields.title}</h1>
+          <h1 className={styles.title}>{String(postFields.title)}</h1>
+          {/* <img src={`https:${postFields.image.fields.file.url}`} alt={postFields.title} className={styles.mainImage} /> */}
 
-          <img src={`https:${postFields.image.fields.file.url}`} alt={postFields.title} className={styles.mainImage} />
-
-          <div
-            className={styles.contentBody}
-            dangerouslySetInnerHTML={{ __html: documentToHtmlString(postFields.content) }}
-          />
+          <div className={styles.contentBody}>
+            {documentToReactComponents(postFields.content as Document, renderOptions)}
+          </div>
         </article>
       </main>
       <Footer />

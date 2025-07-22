@@ -2,6 +2,12 @@
   background-color: var(--color-white);
   width: 100%;
   overflow-x: hidden;
+  opacity: 1;
+  transition: opacity 0.6s ease-in-out;
+}
+
+.loading {
+  opacity: 0;
 }
 
 /* --- Banner Section Styles --- */

@@ -1,11 +1,14 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useEffect, useState } from "react";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import styles from "./Competition.module.css";
 
 const CompetitionPage: FunctionComponent = () => {
+  const [isLoaded, setIsLoaded] = useState(false);
+  useEffect(() => { setIsLoaded(true); }, []);
+  
   return (
-    <div className={styles.pageContainer}>
+    <div className={`${styles.pageContainer} page-transition-container ${!isLoaded ? 'is-loading' : ''}`}>
       <Header />
       <main className={styles.mainContent}>
         {/* Container để căn giữa toàn bộ nội dung */}

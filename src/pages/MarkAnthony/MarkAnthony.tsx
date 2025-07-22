@@ -1,4 +1,4 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useEffect, useState } from "react";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import styles from "./MarkAnthony.module.css";
@@ -43,8 +43,12 @@ const galleryImages = [
 ];
 
 const MarkAnthonyPage: FunctionComponent = () => {
+  // Thêm 2 dòng code này
+  const [isLoaded, setIsLoaded] = useState(false);
+  useEffect(() => { setIsLoaded(true); }, []);
+
   return (
-    <div className={styles.pageContainer}>
+    <div className={`${styles.pageContainer} page-transition-container ${!isLoaded ? 'is-loading' : ''}`}>
       <Header />
       <main className={styles.mainContent}>
         <div className={styles.pageHeader}>

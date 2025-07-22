@@ -5,29 +5,15 @@ import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import styles from "./Press.module.css";
 import BlogPostCard from "../../components/BlogPostCard/BlogPostCard";
-import { BlogPost } from "../../types"; // Import "khuôn mẫu" dữ liệu
-
-// Import custom hook
+import { BlogPost } from "../../types";
 import { useContentful } from "../../hooks/useContentful";
-
-// Import dữ liệu tĩnh để làm dự phòng
 import { blogPosts as fallbackPosts } from "../../data/blogPosts";
 
 const PressPage: FunctionComponent = () => {
-  // Gọi hook để lấy dữ liệu BlogPost động từ Contentful
   const { data: dynamicPosts, isLoading, error } = useContentful<BlogPost>('blogPost');
 
-  // Xử lý trạng thái đang tải
-  if (isLoading) {
-    // Hiển thị một giao diện loading đơn giản trong khi chờ API
-    return <div>Loading Press Page...</div>;
-  }
-
-  // Quyết định nguồn dữ liệu để hiển thị
-  // Nếu có lỗi HOẶC không có dữ liệu động, dùng dữ liệu tĩnh. Ngược lại, dùng dữ liệu động.
   const postsToRender = error || !dynamicPosts ? fallbackPosts : dynamicPosts;
-  
-  // In ra console để bạn biết nguồn dữ liệu nào đang được sử dụng (hữu ích khi debug)
+
   if (error || !dynamicPosts) {
       console.log("Using fallback (static) data for Press page.");
   } else {
@@ -35,7 +21,8 @@ const PressPage: FunctionComponent = () => {
   }
 
   return (
-    <div className={styles.pageContainer}>
+    // THÊM LOGIC CLASS VÀO ĐÂY:
+    <div className={`${styles.pageContainer} page-transition-container ${isLoading ? 'is-loading' : ''}`}>
       <Header sticky={false} />
       <main>
         {/* --- Phần Banner Đen --- */}
@@ -85,7 +72,7 @@ const PressPage: FunctionComponent = () => {
         {/* --- Phần hiển thị Blog --- */}
         <section className={styles.blogSection}>
           <div className={styles.blogGrid}>
-            {/* Sử dụng biến postsToRender để đảm bảo luôn có dữ liệu để hiển thị */}
+            {/* Logic render bài viết giữ nguyên */}
             {postsToRender.map((post) => (
               <BlogPostCard key={post.id} post={post} />
             ))}

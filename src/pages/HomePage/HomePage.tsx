@@ -1,5 +1,5 @@
 // src/pages/WLight1.tsx
-import { FunctionComponent } from "react";
+import { FunctionComponent, useEffect, useState } from "react";
 import Header from "../../components/Header/Header";
 import ImageSlider from "../../components/ImageSlider/ImageSlider"; // <--- 1. IMPORT COMPONENT MỚI
 import Section from "../../components/Section/Section";
@@ -7,8 +7,12 @@ import Footer from "../../components/Footer/Footer";
 import styles from "./HomePage.module.css";
 
 const HomePage: FunctionComponent = () => {
+  // Thêm 2 dòng code này
+  const [isLoaded, setIsLoaded] = useState(false);
+  useEffect(() => { setIsLoaded(true); }, []);
+
   return (
-    <div className={styles.pageContainer}>
+    <div className={`${styles.pageContainer} page-transition-container ${!isLoaded ? 'is-loading' : ''}`}>
       <Header />
 
       <main className={styles.mainContent}>

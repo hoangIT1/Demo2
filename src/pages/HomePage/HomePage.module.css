@@ -4,6 +4,7 @@
   background-color: var(--color-white);
   width: 100%;
   overflow-x: hidden; /* Ngăn cuộn ngang */
+  animation: fadeIn 0.6s ease-in-out;
 }
 
 .mainContent {

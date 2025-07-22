@@ -1,10 +1,14 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useEffect, useState } from "react";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import styles from "./NationalDirectors.module.css";
 
 const NationalDirectorsPage: FunctionComponent = () => {
   // Dữ liệu mẫu cho các giám đốc. Bạn có thể thêm nhiều giám đốc vào mảng này.
+  // Thêm 2 dòng code này
+  const [isLoaded, setIsLoaded] = useState(false);
+  useEffect(() => { setIsLoaded(true); }, []);
+
   const directors = [
     {
       name: "Sergio Meso",
@@ -18,7 +22,7 @@ const NationalDirectorsPage: FunctionComponent = () => {
   ];
 
   return (
-    <div className={styles.pageContainer}>
+    <div className={`${styles.pageContainer} page-transition-container ${!isLoaded ? 'is-loading' : ''}`}>
       <Header />
       <main className={styles.mainContent}>
         <div className={styles.contentWrapper}>

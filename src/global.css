@@ -55,3 +55,16 @@ body {
   --font-size-40: 40px;
   --font-size-72: 72px;
 }
+
+/* Thêm vào cuối file src/global.css */
+
+/* Lớp container cho hiệu ứng chuyển trang */
+.page-transition-container {
+  opacity: 1;
+  transition: opacity 0.6s ease-in-out;
+}
+
+/* Lớp được thêm vào khi trang đang "tải" */
+.page-transition-container.is-loading {
+  opacity: 0;
+}
