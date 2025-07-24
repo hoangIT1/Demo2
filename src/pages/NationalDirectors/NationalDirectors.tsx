@@ -1,56 +1,79 @@
+// src/pages/NationalDirectors/NationalDirectors.tsx
+
 import { FunctionComponent, useEffect, useState } from "react";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import styles from "./NationalDirectors.module.css";
+import { useContentful } from "../../hooks/useContentful";
+import { NationalDirectorsPageContent } from "../../types";
+import { staticNationalDirectorsData } from "../../data/staticNationalDirectorsData";
 
 const NationalDirectorsPage: FunctionComponent = () => {
-  // Dữ liệu mẫu cho các giám đốc. Bạn có thể thêm nhiều giám đốc vào mảng này.
-  // Thêm 2 dòng code này
   const [isLoaded, setIsLoaded] = useState(false);
-  useEffect(() => { setIsLoaded(true); }, []);
+  const { data: dynamicContent, isLoading, error } = useContentful<NationalDirectorsPageContent>('nationalDirectorsPage', 'national-directors');
 
-  const directors = [
-    {
-      name: "Sergio Meso",
-      image: "/Copy of IG23.jpg", 
-    },
-    // Thêm các giám đốc khác vào đây nếu muốn
-    // {
-    //   name: "Anthony Santana",
-    //   image: "/director-sample-2.png",
-    // }
-  ];
+  const content = (error || !dynamicContent || Array.isArray(dynamicContent))
+    ? staticNationalDirectorsData
+    : dynamicContent;
+
+  useEffect(() => {
+    if (!isLoading) {
+      setIsLoaded(true);
+    }
+    if (error) {
+        console.warn("NationalDirectorsPage: Could not fetch from Contentful, using fallback static data.", error);
+    }
+  }, [isLoading, error]);
+
+  if (isLoading) {
+    return null;
+  }
+  
+  if (!content) {
+    return <div>Error: Could not load page content.</div>;
+  }
+
+  // Tách các đoạn văn để xử lý riêng đoạn cuối cùng
+  const introParagraphs = content.introParagraphs || [];
+  const allButLastParagraph = introParagraphs.slice(0, -1);
+  const lastParagraph = introParagraphs.slice(-1)[0];
 
   return (
     <div className={`${styles.pageContainer} page-transition-container ${!isLoaded ? 'is-loading' : ''}`}>
       <Header />
       <main className={styles.mainContent}>
         <div className={styles.contentWrapper}>
-          <h1 className={styles.pageTitle}>Our National Directors.</h1>
+          <h1 className={styles.pageTitle}>{content.mainTitle}</h1>
+          
+          {/* Render các đoạn văn bản đầu tiên bình thường */}
+          {allButLastParagraph.map((paragraph, index) => (
+            <p key={index} className={styles.introText}>
+              {paragraph}
+            </p>
+          ))}
+          
+          {/* Gộp đoạn văn cuối cùng và email vào chung một thẻ <p> */}
+          {lastParagraph && (
+            <p className={styles.introText}>
+              {lastParagraph}
+              <br />
+              <a href={`mailto:${content.emailAddress}`}>{content.emailAddress}</a>
+            </p>
+          )}
+
+          {/* Render phần chữ ký ("Thank you") như một đoạn văn riêng biệt */}
           <p className={styles.introText}>
-            We are delighted to announce our official National Directors for the 2nd Mister King International Competition.
-          </p>
-          <p className={styles.introText}>
-            To compete for your home country, please visit the corresponding website below to learn how to apply and the application deadlines.
-          </p>
-          <p className={styles.introText}>
-            If you are interested in becoming a National Director and would like to send a candidate from your home country for the 2023 / 2nd Mister King International Competition, please send your company profile to 
+            {content.signature}
             <br />
-            <a href="mailto:ceo@misterkinginternational.com">ceo@misterkinginternational.com</a>.
-          </p>
-          <p className={styles.introText}>
-            Thank you,
-            <br />
-            Mister International Organization
+            {content.organizationName}
           </p>
 
           <div className={styles.directorsGrid}>
-            {/* Lặp qua mảng dữ liệu để tạo các thẻ giám đốc */}
-            {directors.map((director, index) => (
-              <div key={index} className={styles.directorCard}>
+            {content.directors && content.directors.map((director) => (
+              <div key={director.id} className={styles.directorCard}>
                 <img
                   src={director.image}
-                  alt={`National Director ${director.name}`}
+                  alt={director.title || 'National Director'}
                   className={styles.directorImage}
                 />
               </div>

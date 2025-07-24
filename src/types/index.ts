@@ -230,3 +230,24 @@ export type TypeNationalDirectorsPageSkeleton = EntrySkeletonType<{
 }>;
 
 // ======================= KẾT THÚC PHẦN MỚI =======================
+
+
+// ======================= BẮT ĐẦU PHẦN MỚI CHO CONTESTANTS =======================
+
+// Kiểu dữ liệu đã được format để component sử dụng
+export interface ContestantsPageContent {
+  pageTitle: string;
+  slug: string;
+  paragraph: string;
+  comingSoonText: string;
+}
+
+// Skeleton cho Contentful
+export type TypeContestantsPageSkeleton = EntrySkeletonType<{
+  pageTitle: EntryFieldTypes.Symbol;
+  slug: EntryFieldTypes.Symbol;
+  paragraph: EntryFieldTypes.Text;
+  comingSoonText: EntryFieldTypes.Symbol;
+}>;
+
+// ======================= KẾT THÚC PHẦN MỚI =======================
