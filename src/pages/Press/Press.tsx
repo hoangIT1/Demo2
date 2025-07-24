@@ -73,7 +73,7 @@ const PressPage: FunctionComponent = () => {
         <section className={styles.blogSection}>
           <div className={styles.blogGrid}>
             {/* Logic render bài viết giữ nguyên */}
-            {postsToRender.map((post) => (
+            {Array.isArray(postsToRender) && postsToRender.map((post) => (
               <BlogPostCard key={post.id} post={post} />
             ))}
           </div>

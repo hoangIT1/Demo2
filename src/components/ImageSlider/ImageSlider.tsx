@@ -75,52 +75,48 @@
 
 // src/components/ImageSlider/ImageSlider.tsx
 
-import { FunctionComponent, useCallback } from "react";
+// src/components/ImageSlider/ImageSlider.tsx
+
+// src/components/ImageSlider/ImageSlider.tsx
+
+import { FunctionComponent, useCallback } from "react"; // Thêm lại useCallback
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
-import { Swiper as SwiperType } from "swiper";
+import { Swiper as SwiperType } from "swiper"; // Thêm lại SwiperType
 
 import "swiper/css";
 import "swiper/css/autoplay";
 import styles from "./ImageSlider.module.css";
-
-// ======================= PHẦN THÊM MỚI =======================
-import { useContentful } from "../../hooks/useContentful";
 import { ImageSliderItem } from "../../types";
-// Import dữ liệu tĩnh để fallback
-import { staticImages } from "../../data/staticSliderImages"; 
-// =============================================================
 
-const ImageSlider: FunctionComponent = () => {
-  // ======================= PHẦN THAY ĐỔI =======================
-  // Lấy thêm `error` từ custom hook
-  const { data: dynamicImages, isLoading, error } = useContentful<ImageSliderItem>('imageSlider');
+type ImageSliderProps = {
+  slides: ImageSliderItem[];
+};
 
-  // Quyết định dữ liệu nào sẽ được render
-  const imagesToRender = error || !dynamicImages ? staticImages : dynamicImages;
-
-  if (error) {
-      console.log("ImageSlider: Could not fetch from Contentful, using fallback static images.");
+const ImageSlider: FunctionComponent<ImageSliderProps> = ({ slides }) => {
+  if (!slides || slides.length === 0) {
+    return null;
   }
-  // =============================================================
 
+  // ======================= BẮT ĐẦU PHẦN SỬA LỖI =======================
+  // THÊM LẠI LOGIC XỬ LÝ HIỆU ỨNG OPACITY
   const handleSlideChange = useCallback((swiper: SwiperType) => {
     swiper.slides.forEach((slide) => {
+      // Giảm độ mờ cho tất cả slide
       slide.style.opacity = '0.8';
+      // CSS trong file .module.css sẽ xử lý việc scale nhỏ lại
     });
     if (swiper.slides[swiper.activeIndex]) {
+      // Làm cho slide chính giữa hiện rõ (không mờ)
       swiper.slides[swiper.activeIndex].style.opacity = '1';
     }
   }, []);
 
   const handleSwiperInit = useCallback((swiper: SwiperType) => {
+    // Gọi lần đầu khi slider được khởi tạo để áp dụng hiệu ứng ngay lập tức
     handleSlideChange(swiper);
   }, [handleSlideChange]);
-
-  // Vẫn giữ placeholder khi đang tải để tránh giật layout
-  if (isLoading) {
-    return <div className={styles.sliderSection}><div className={styles.swiperContainer}></div></div>;
-  }
+  // ======================= KẾT THÚC PHẦN SỬA LỖI =======================
 
   return (
     <section className={styles.sliderSection}>
@@ -136,18 +132,16 @@ const ImageSlider: FunctionComponent = () => {
           delay: 3000,
           disableOnInteraction: false,
         }}
+        // THÊM LẠI 2 PROPS QUAN TRỌNG ĐỂ GỌI HÀM XỬ LÝ HIỆU ỨNG
         onSwiper={handleSwiperInit}
         onSlideChange={handleSlideChange}
         className={styles.swiperContainer}
       >
-        {/* ======================= PHẦN THAY ĐỔI ======================= */}
-        {/* Render từ `imagesToRender` */}
-        {imagesToRender.map((slide) => (
+        {slides.map((slide) => (
           <SwiperSlide key={slide.id} className={styles.swiperSlide}>
             <img src={slide.image} alt={slide.title} />
           </SwiperSlide>
         ))}
-        {/* ============================================================= */}
       </Swiper>
     </section>
   );
